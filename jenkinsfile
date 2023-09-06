@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Notify') {
             steps {
-               slackSend (channel:"test-jenkins" ,color: "#3498db", message: "Build started $BUILD_USER")
+               slackSend (channel:"test-jenkins" ,color: "#3498db", message: "Build started by $BUILD_USER")
             }
         }
         stage('Install') {
