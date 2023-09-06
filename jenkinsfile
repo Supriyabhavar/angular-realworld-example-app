@@ -20,7 +20,11 @@ pipeline {
         stage('Upload') {
             steps {
                 withAWS(credentials: 'Aws-creds', region: 'ap-south-1') {
-                    sh 'aws s3 cp index.html s3://websitehostingsupriya/'
+                    sh '''
+                    cd dist/
+                    cd angular-conduit/   
+                    aws s3 cp . s3://websitehostingsupriya/ --recursive
+                    '''
                 }
                 
             }
