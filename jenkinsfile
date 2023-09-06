@@ -6,6 +6,10 @@ pipeline {
     // }
 
     stages {
+        stage('Notify') {
+            steps {
+               slackSend (channel:"test-jenkins" ,color: "#3498db", message: "Build started")
+            }
         stage('Install') {
             steps {
                 sh 'npm install'
@@ -41,10 +45,10 @@ pipeline {
 
     post {
         success {
-            echo 'Build succeeded!'
+            slackSend (channel:"test-jenkins" ,color: "#2ecc71" , message: "Build succeeded")
         }
         failure {
-            echo 'Build failed!'
+             slackSend (channel:"test-jenkins" ,color: "#e74c3c", message: "Build failed")
         }
     }
 
