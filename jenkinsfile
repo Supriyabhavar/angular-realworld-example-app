@@ -46,7 +46,7 @@ pipeline {
 
     post {
         success {
-            slackSend (channel:"test-jenkins" ,color: "#2ecc71" , message: "Build succeeded $BUILD_USER")
+            slackSend (channel:"test-jenkins" ,color: "#2ecc71" , message: "Build succeeded $BUILD_USER $BUILD_USER_ID" )
         }
         failure {
              slackSend (channel:"test-jenkins" ,color: "#e74c3c", message: "Build failed")
