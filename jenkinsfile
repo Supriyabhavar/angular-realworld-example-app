@@ -10,6 +10,7 @@ pipeline {
             steps {
                slackSend (channel:"test-jenkins" ,color: "#3498db", message: "Build started")
             }
+        }
         stage('Install') {
             steps {
                 sh 'npm install'
