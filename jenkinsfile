@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Notify') {
             steps {
-               slackSend (channel:"test-jenkins" ,color: "#3498db", message: "Build started")
+               slackSend (channel:"test-jenkins" ,color: "#3498db", message: "Build started $BUILD_USER")
             }
         }
         stage('Install') {
@@ -46,7 +46,7 @@ pipeline {
 
     post {
         success {
-            slackSend (channel:"test-jenkins" ,color: "#2ecc71" , message: "Build succeeded $BUILD_USER $BUILD_USER_ID" )
+            slackSend (channel:"test-jenkins" ,color: "#2ecc71" , message: "Build succeeded $BUILD_USER" )
         }
         failure {
              slackSend (channel:"test-jenkins" ,color: "#e74c3c", message: "Build failed")
